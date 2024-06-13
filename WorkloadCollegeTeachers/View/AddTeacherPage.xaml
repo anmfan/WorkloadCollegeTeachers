@@ -1,0 +1,130 @@
+﻿<Page x:Class="WorkloadCollegeTeachers.View.AddTeacherPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorkloadCollegeTeachers.View"
+      mc:Ignorable="d"
+      Width="800" Height="1500"
+      Title="AddTeacherPage">
+
+    <Page.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid x:Name="AddTeacher">
+        <StackPanel MaxHeight="100" MaxWidth="800" VerticalAlignment="Top" Height="60" Margin="38,0,10,0">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FF8387F1"/>
+                    <GradientStop Color="#FF3F46CA" Offset="0.871"/>
+                    <GradientStop Color="#FFA9ADF5" Offset="0.4"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button Style="{DynamicResource RoundedButtonStyle}" Content="Назад" HorizontalAlignment="Left" Background="White" Margin="30,15,0,0" Height="30" Width="54" Click="Button_Click" BorderBrush="#FF707070" FontSize="13"/>
+            <Label Width="208" Content="College - Piece of Paradise" HorizontalAlignment="Left" FontSize="15" Margin="110,-27,0,0"/>
+        </StackPanel>
+        <StackPanel Margin="214,74,186,846" Width="400" MaxHeight="600">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FFABAFF9" Offset="0.012"/>
+                    <GradientStop Color="#FF3F46CA" Offset="0.871"/>
+                    <GradientStop Color="#FF989DF3" Offset="0.4"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock MaxWidth="203" FontSize="15" Margin="10"><Run Text="Добавление преподавателей"/></TextBlock>
+            <StackPanel Margin="10,0,0,0" Width="377" MaxWidth="377" HorizontalAlignment="Center">
+                <TextBlock HorizontalAlignment="Left" Width="32" FontSize="13" Margin="20,30,0,0"><Run Text="Фото"/></TextBlock>
+                <Image x:Name="myImage" Margin="-90,-35,0,0" Height="65" Width="86" HorizontalAlignment="Center"/>
+                <Button Content="Выбрать" MaxHeight="25" MaxWidth="80" Click="Button_Click_2" HorizontalAlignment="Right" Width="80" Height="25" Margin="0,-75,100,0"/>
+            </StackPanel>
+            <StackPanel Margin="-75,0,10,0" Width="281">
+                <TextBlock HorizontalAlignment="Left" Width="32" FontSize="13" Margin="20,30,0,0"><Run Text="Имя"/></TextBlock>
+                <TextBox x:Name="NameTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Width="160" Margin="0,-17,-120,0"/>
+            </StackPanel>
+            <StackPanel Margin="-75,0,10,0"  Width="281">
+                <TextBlock HorizontalAlignment="Left" Width="65" FontSize="13" Margin="20,30,0,0"><Run Text="Фамилия"/></TextBlock>
+                <TextBox x:Name="SecondNameTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Width="160" Margin="0,-17,-120,0"/>
+            </StackPanel>
+            <StackPanel Margin="-75,0,10,0"  Width="281">
+                <TextBlock HorizontalAlignment="Left" Width="65" FontSize="13" Margin="20,30,0,0"><Run Text="Отчество"/></TextBlock>
+                <TextBox x:Name="PatronymicTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Width="160" Margin="0,-17,-120,0"/>
+            </StackPanel>
+            <StackPanel Margin="-75,0,10,0"  Width="281">
+                <TextBlock HorizontalAlignment="Left" Width="65" FontSize="13" Margin="20,30,0,0"><Run Text="Возраст"/></TextBlock>
+                <TextBox x:Name="AgeTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Width="160" Margin="0,-17,-120,0" TextChanged="AgeTextBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="-75,0,10,0"  Width="281">
+                <TextBlock HorizontalAlignment="Left" Width="65" FontSize="13" Margin="20,30,0,0"><Run Text="Логин"/></TextBlock>
+                <TextBox x:Name="LoginTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Width="160" Margin="0,-17,-120,0" TextChanged="AgeTextBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="-75,0,10,0"  Width="281">
+                <TextBlock HorizontalAlignment="Left" Width="65" FontSize="13" Margin="20,30,0,0"><Run Text="Пароль"/></TextBlock>
+                <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Width="160" Margin="0,-17,-120,0" TextChanged="AgeTextBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="-75,0,10,0"  Width="281">
+                <TextBlock HorizontalAlignment="Left" Width="96" FontSize="13" Margin="15,30,0,0"><Run Text="Специальность"/></TextBlock>
+                <ComboBox x:Name="SpecialtiesComboBox" HorizontalAlignment="Center" Width="160" Margin="0,-17,-120,0"
+                          SelectionChanged="SpecialtiesComboBox_SelectionChanged" ItemsSource="{Binding Specialties}" DisplayMemberPath="name" SelectedValuePath="specialties_id"/>
+            </StackPanel>
+            <StackPanel Margin="0,-20,0,0">
+                <Button Style="{DynamicResource RoundedButtonStyle}" Content="Добавить" Width="80" HorizontalAlignment="Center" MaxHeight="25" MaxWidth="80" Height="22" Click="Button_Click_1" Margin="30,65,0,0"/>
+                <CheckBox x:Name="adminCheckBox" Content="Администратор" HorizontalAlignment="Left" Height="17" Width="112" Margin="30,-17,0,0" Checked="CheckBox_Checked"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
